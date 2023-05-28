@@ -11,3 +11,13 @@ services:
       - .:/app
     environment:
       - WATCHPACK_POLLING=true
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    environment:
+      - WATCHPACK_POLLING=true
+    command: ["npm","run","test"]
