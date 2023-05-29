@@ -11,6 +11,10 @@ RUN npm run build
 
 # Block or phase 2 (run), automatically starts after another FROM image statement
 FROM nginx
+
+# It tells to AWS Elastic Beanstalk to map the trafic to this port but it does nothing to us as developers
+EXPOSE 80
+
 # We want to copy our /app/build folder into this new nginx container. The --from means from another phase
 # If we watch the nginx configuration on dockerhub we see that the build files (build folder) have to go to /usr/share/nginx/html
 COPY --from=builder /app/build /usr/share/nginx/html
